@@ -165,13 +165,18 @@ const foodArr = [
 
 // console.log(filteredFood);
 
-const filteredFood = foodArr.filter(function(food) {
-    // Check if the 'tags' array includes 'beef'
-    return food.tags.includes('beef');
-  });
-  
-  console.log(filteredFood);
-  
+// const filteredFood = foodArr.filter(function(food) {
+//     // Check if the 'tags' array includes 'beef'
+//     return food.tags.includes('beef');
+//   });
+
+function isTagThere(food) {
+  // Check if the 'tags' array includes 'beef'
+//   console.log(food.tags.includes("beef"));
+}
+
+//   console.log(filteredFood);
+// console.log(foodArr);
 
 //////////////////PROBLEM 5////////////////////
 /* 
@@ -205,7 +210,7 @@ const filteredFood = foodArr.filter(function(food) {
         if it is, return objects whose value for the given
         property is greater than the `number` passed in
 
-        If the type isn't `below`, return objects whose
+        If the type is `below`, return objects whose
         value for the given property is less than the 
         `number` passed in
     
@@ -213,6 +218,28 @@ const filteredFood = foodArr.filter(function(food) {
 */
 
 //CODE HERE
+// Write a function called `filterByProperty`
+// that takes in three arguments: `property`,
+// `number`, and `type.
+function filterByProperty(property, number, type) {
+  // Inside the function, create a variable to hold
+  // a filtered array
+  //     Use the filter method to filter the foodArr
+  //     In the callback, check if the `type` is `above`,
+  //     if it is, return objects whose value for the given
+  //     property is greater than the `number` passed in
+  const filteredFood = foodArr.filter((food) => {
+    if (type === "above") {
+      return food[property] > number;
+      //If the type is `below`, return objects whose value for the given property is less than the `number` passed in
+    } else if (type === "below") {
+      return food[property] < number;
+    }
+
+    // Return the filtered array from the entire function
+  });
+  return filteredFood;
+}
 
 /*
     Invoke the `filterByProperty` function passing
@@ -222,3 +249,4 @@ const filteredFood = foodArr.filter(function(food) {
 */
 
 //CODE HERE
+console.log(filterByProperty('price', 9, 'below'))
