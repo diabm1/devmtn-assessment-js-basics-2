@@ -7,7 +7,6 @@
     creating customer objects.  
 */
 
-
 //////////////////PROBLEM 1////////////////////
 /*  
     Below is a cart array that has food objects
@@ -19,24 +18,27 @@
 */
 
 const cart = [
-    {
-        name: 'pizza', 
-        price: 9.99
-    }, 
-    {
-        name: 'pasta', 
-        price: 8.99
-    }, 
-    {
-        name: 'salad', 
-        price: 7.99
-    }
-]
+  {
+    name: "pizza",
+    price: 9.99,
+  },
+  {
+    name: "pasta",
+    price: 8.99,
+  },
+  {
+    name: "salad",
+    price: 7.99,
+  },
+];
 
 //CODE HERE
 
-// const summedPrice = cart.reduce(/* CALLBACK HERE */)
+const summedPrice = cart.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue.price;
+}, 0);
 
+console.log(summedPrice);
 
 //////////////////PROBLEM 2////////////////////
 /*  
@@ -54,8 +56,17 @@ const cart = [
 */
 
 //CODE HERE
+// const calcFinalPrice = (cartTotal, couponValue, tax) => {
+//   const taxAmount = cartTotal * tax;
+//   const finalPrice = cartTotal + taxAmount - couponValue;
+//   return finalPrice;
+// };
 
+const calcFinalPrice = (cartTotal, couponValue, tax) => {
+  return cartTotal + cartTotal * tax - couponValue;
+};
 
+console.log(calcFinalPrice(100, 10, 0.06));
 
 //////////////////PROBLEM 3////////////////////
 /*  
@@ -80,6 +91,13 @@ const cart = [
 /*
     TEXT ANSWER HERE
 
+    A customer object for a cart page should have properties such as name, email, phone number, and address. These properties are chosen because a restaurant would need this information to process orders, contact customers if necassary, and deliver food.
+
+    - The name property should be of type string because it represents the customer's name.
+    - The email property should be of type string because it represents the customer's email address.
+    - The phone number property should be of type string because it reperesents the customer's phone number due special characters such as spaces, dashes, or parantheses.
+    - The address property should be of type object because it contains multiple pieces of information such as street, city, state, zip code.
+
 */
 
 /*
@@ -88,3 +106,14 @@ const cart = [
 */
 
 //CODE HERE
+const customer = {
+  name: "John Doe",
+  email: "johndoe@example.com",
+  phoneNumber: "123-456-7890",
+  address: {
+    street: "123 Main St",
+    city: "Anytown",
+    state: "CA",
+    zipCode: "12345",
+  },
+};
