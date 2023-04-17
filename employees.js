@@ -68,7 +68,13 @@ empOne.getSchedule()
 */
 
 //CODE HERE
-const empTwo = {...empOne, name: "Nick"}
+
+// Kept getting error when just copying over empOne obj using spread operator
+// After reading some info online spread operator only makes shallow copy of object meaning it only copies the objects properties not it's methods. In order to copy over the methods I've tried the solution below
+
+// const empTwo = {...empOne, name: "Nick"}
+const empTwo = Object.create(empOne);
+empTwo.name = "Nick"
 empTwo.getSchedule();
 
 
@@ -98,6 +104,20 @@ empTwo.getSchedule();
 */
 
 //CODE HERE
+class Manager extends Employee {
+    constructor(name, shifts, employees){
+        super(name, shifts)
+        this.employees = employees
+    }
+
+    getEmployees(){
+        console.log(`${this.name} manages ${this.employees}`)
+    }
+
+    addEmployee(emp){
+        this.employees.push(emp)
+    }
+}
 
 
 
@@ -113,7 +133,7 @@ empTwo.getSchedule();
 */
 
 //CODE HERE
-
+const manager = new Manager("Winston", "weekday mornings, weekday afternoons", ["Cece", "Schmidt"])
 
 /*
     Call the `getEmployees` method on the
@@ -121,6 +141,9 @@ empTwo.getSchedule();
 */
 
 //CODE HERE
+manager.getEmployees()
+
+
 
 /*
     Call the `addEmployee` method on the 
@@ -128,7 +151,8 @@ empTwo.getSchedule();
     'Coach' or whatever name you'd like.
 */
 
-//CODE HERE 
+//CODE HERE 9
+manager.addEmployee("Coach")
 
 /*
     Call the `getEmployees` method on the
@@ -137,3 +161,4 @@ empTwo.getSchedule();
 */
 
 //CODE HERE
+manager.getEmployees()
